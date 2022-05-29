@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e107Plugin name="LiteSpeed Cache" lan="" version="1.0" date="2022-05-29" compatibility="2.0" installRequired="true" >
+	<author name="e107" url="https://e107.org" />
+	<summary lan="">Litespeed cache control plugin</summary>
+	<description lan="">Improves performance of e107 v2 running on Litespeed servers.</description>
+	<keywords>
+		<word>generic</word>
+		<word>lscache</word>
+		<word>litespeed</word>
+	</keywords>
+	<category>tools</category>
+	<copyright></copyright>
+	<adminLinks>
+		<link url="admin_config.php" description="" icon="images/lscache_32.png" iconSmall="images/lscache_16.png" icon128="images/lscache_128.png" primary="true" >LAN_CONFIGURE</link>
+	</adminLinks>
+	<pluginPrefs>
+		<pref name='status'>1</pref>
+		<pref name='debug'>0</pref>
+		<pref name='ttl'>28800</pref>
+	</pluginPrefs>
+</e107Plugin>
