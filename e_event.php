@@ -29,8 +29,8 @@ class lscache_event // plugin-folder + '_event'
 		$event = array();
 
 		$event[] = array(
-			'name'	=> "login", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
-			'function'	=> "myfunction", // ..run this function (see below).
+			'name'	=> "clear_cache", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
+			'function'	=> "clearCache",
 		);
 
 		return $event;
@@ -38,9 +38,9 @@ class lscache_event // plugin-folder + '_event'
 	}
 
 
-	function myfunction($data) // the method to run.
+	function clearCache($data=null)
 	{
-		// var_dump($data);
+		header('X-LiteSpeed-Purge: *');
 	}
 
 

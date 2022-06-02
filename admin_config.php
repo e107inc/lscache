@@ -82,7 +82,7 @@ class lscache_ui extends e_admin_ui
 			'status'		=> array('title'=> 'Status', 'tab'=>'general', 'type'=>'boolean', 'data' => 'str', 'help'=>'Enable/Disable Caching', 'writeParms' => array()),
 			'debug'		=> array('title'=> 'Debug', 'tab'=>'general', 'type'=>'boolean', 'data' => 'str', 'help'=>'If enabled, LiteSpeed Cache will emit extra headers for testing while developing', 'writeParms' => array()),
 			'ttl'		=> array('title'=> 'TTL', 'tab'=>'general', 'type'=>'number', 'data' => 'str', 'help'=>'Amount of time LiteSpeed web server will save pages in the public cache.', 'writeParms' => array()),
-		); 
+		);
 
 	
 		public function init()
@@ -94,10 +94,6 @@ class lscache_ui extends e_admin_ui
 				e107::getMessage()->addWarning("This plugin is not yet installed. Saving and loading of preference or table data will fail.");
 			}
 
-			e107::getMessage()->addWarning("Under development - this plugin currently does nothing. ");
-
-			// Set drop-down values (if any). 
-	
 		}
 
 		
@@ -134,13 +130,20 @@ class lscache_ui extends e_admin_ui
 		public function onUpdateError($new_data, $old_data, $id)
 		{
 			// do something		
-		}		
+		}
+
+		public function afterPrefsSave()
+		{
+			header('X-LiteSpeed-Purge: *');
+		}
 		
 		// left-panel help menu area. (replaces e_help.php used in old plugins)
 		public function renderHelp()
 		{
+
+
 			$caption = LAN_HELP;
-			$text = 'Added the following to <b>.htaccess</b> '.print_a('
+			$text = 'Add the following to <b>.htaccess</b> '.print_a('
 <IfModule LiteSpeed>
 CacheLookup on
 </IfModule>
