@@ -31,7 +31,7 @@ class lscache_adminArea extends e_admin_dispatcher
 	protected $adminMenu = array(
 			
 		'main/prefs' 		=> array('caption'=> LAN_PREFS, 'perm' => 'P'),	
-
+	//	'main/clear' 		=> array('caption'=> "Clear Cache", 'perm' => 'P'),
 		// 'main/div0'      => array('divider'=> true),
 		// 'main/custom'		=> array('caption'=> 'Custom Page', 'perm' => 'P'),
 		
@@ -82,6 +82,7 @@ class lscache_ui extends e_admin_ui
 			'status'		=> array('title'=> 'Status', 'tab'=>'general', 'type'=>'boolean', 'data' => 'str', 'help'=>'Enable/Disable Caching', 'writeParms' => array()),
 			'debug'		=> array('title'=> 'Debug', 'tab'=>'general', 'type'=>'boolean', 'data' => 'str', 'help'=>'If enabled, LiteSpeed Cache will emit extra headers for testing while developing', 'writeParms' => array()),
 			'ttl'		=> array('title'=> 'TTL', 'tab'=>'general', 'type'=>'number', 'data' => 'str', 'help'=>'Amount of time LiteSpeed web server will save pages in the public cache.', 'writeParms' => array()),
+			'exclude'  => array('title'=> 'Exclude', 'tab'=>'general', 'type'=>'textarea', 'data'=>'str', 'help'=>'Enter partial URLs for pages you would like to exclude from caching. One per line.'),
 		);
 
 	
