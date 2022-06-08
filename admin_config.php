@@ -135,7 +135,8 @@ class lscache_ui extends e_admin_ui
 
 		public function afterPrefsSave()
 		{
-			header('X-LiteSpeed-Purge: *');
+			e107::getMessage()->addInfo("Clearing all LiteSpeed public/private cache");
+			header('X-LiteSpeed-Purge: *;private, *');
 		}
 		
 		// left-panel help menu area. (replaces e_help.php used in old plugins)

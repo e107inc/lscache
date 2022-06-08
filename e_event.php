@@ -29,9 +29,25 @@ class lscache_event // plugin-folder + '_event'
 		$event = array();
 
 		$event[] = array(
-			'name'	=> "clear_cache", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
+			'name'	=> "admin_after_clear_cache", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
 			'function'	=> "clearCache",
 		);
+
+		$event[] = array(
+			'name'	=> "admin_ui_updated", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
+			'function'	=> "clearCache",
+		);
+
+		$event[] = array(
+			'name'	=> "admin_ui_created", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
+			'function'	=> "clearCache",
+		);
+
+		$event[] = array(
+			'name'	=> "admin_ui_delete", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
+			'function'	=> "clearCache",
+		);
+
 
 		return $event;
 
@@ -40,7 +56,19 @@ class lscache_event // plugin-folder + '_event'
 
 	function clearCache($data=null)
 	{
-		header('X-LiteSpeed-Purge: *');
+
+		if(!empty($data['plugin']))
+		{
+			header('X-LiteSpeed-Purge: public,tag='.$data['plugin'].';private,tag='.$data['plugin']);
+			e107::getMessage()->addInfo('Clearing LiteSpeed public/private cache with tag:<b>'.$data['plugin'].'</b>');
+		}
+		else
+		{
+			header('X-LiteSpeed-Purge: public,*;private,*');
+			e107::getMessage()->addInfo('Clearing all LiteSpeed public/private cache');
+		}
+
+
 	}
 
 
