@@ -48,6 +48,12 @@ class lscache_event // plugin-folder + '_event'
 			'function'	=> "clearCache",
 		);
 
+		$event[] = array(
+			'name'	=> "admin_after_clear_cache", // when this is triggered... (see http://e107.org/developer-manual/classes-and-methods#events)
+			'function'	=> "clearCache",
+		);
+
+
 		return $event;
 
 	}
