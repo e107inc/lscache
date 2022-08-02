@@ -21,7 +21,7 @@ class lscache_module
 	{
 		$this->pref = e107::pref('lscache');
 
-		if(empty($this->pref['status']))
+		if(empty($this->pref['status']) || deftrue('e_DEBUG'))
 		{
 			return;
 		}
